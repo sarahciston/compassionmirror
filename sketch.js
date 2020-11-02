@@ -37,7 +37,7 @@ function setup(){
   
   canvas = createCanvas(1024, 768) //, WEBGL);
   
-  frameRate(1);
+  frameRate(0.5);
   
   textSize(width/25);
   textFont(Avenir); 
