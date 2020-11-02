@@ -108,15 +108,14 @@ function windowResized() {
     resizeCanvas(windowWidth, windowHeight); 
 }
 
-// function keyPressed() {
-//   if (keyCode === ENTER) { 
-//     // noLoop();
-//     staticFrame();
-//     image(img, 0, 0, windowWidth, windowHeight);
-//   }
-// }
+function keyPressed() {
+  if (keyCode === ENTER) { 
+    noLoop();
+    staticFrame();
+  }
+}
 
 //make screengrab on ENTER key or ?frame URL
-// function staticFrame() {
-//   save('Ciston-staticFrame' + new Date() +'.jpg');
-// }
+function staticFrame() {
+  save('Ciston-staticFrame' + new Date() +'.jpg');
+}
