@@ -2,12 +2,13 @@
 // with p5.js, ml5.js, p5.speech libraries
 // and gpt2 deepAI api
 
-var url;
+let url;
+let staticImage;
 
 let originalText = 'IVO-TextOnly.txt';
 let textGPT = 'IVO-GPT2generatedONLY.txt';
-// let SFCompact = 'SFCompactText-Light.otf';
 let Avenir = 'Avenir.otf';
+let img = 'CMstaticFrame2.jpg';
 
 let msgOrig = [];
 let msgGPT = [];
@@ -27,6 +28,8 @@ function preload() {
   textGPT = loadStrings(textGPT);
   uNet = ml5.uNet('face');
   Avenir = loadFont(Avenir);
+  img = loadImage(img);
+  
 }
 
 
@@ -35,7 +38,6 @@ function setup(){
   canvas = createCanvas(1024, 768) //, WEBGL);
   
   frameRate(1);
-  // talkRate = frameRate/2; //per every X frames, 30 = 1 second if frameRate is 30
   
   textSize(width/25);
   textFont(Avenir); 
@@ -72,8 +74,7 @@ function draw() {
   fill(50, 205, 50); //lime
   text(msgOrig[latestOrig], random(800), random(800), 800, 800)
 
-  
-    //draw face mask
+  //draw face mask
   image(segmentationImage, 0, 0, width, height);
   
   //draw random message from GPT results, in front of face
@@ -85,15 +86,16 @@ function draw() {
   
   //speak latest message from original samples & GPT
   talk.speak(msgGPT[latestGPT]);
-  // if(frameCount % talkRate == 0){};
+  // if(frameCount % talkRate == 0){}; //change rate TBD
   
   //create static frame with ?frame URL param
   if (url.searchParams.has("frame") && frameCount > 5) {    
     noLoop();
+    image(img, 0, 0, windowWidth, windowHeight);
   };
 }
 
-///////////////////
+
 //after DOM loads//
 
 //toggle fullscreen on mouse press
@@ -106,14 +108,15 @@ function windowResized() {
     resizeCanvas(windowWidth, windowHeight); 
 }
 
-function keyPressed() {
-  if (keyCode === ENTER) { 
-    // noLoop();
-    staticFrame();
-  }
-}
+// function keyPressed() {
+//   if (keyCode === ENTER) { 
+//     // noLoop();
+//     staticFrame();
+//     image(img, 0, 0, windowWidth, windowHeight);
+//   }
+// }
 
 //make screengrab on ENTER key or ?frame URL
-function staticFrame() {
-  save('Ciston-staticFrame' + new Date() +'.jpg');
-}
+// function staticFrame() {
+//   save('Ciston-staticFrame' + new Date() +'.jpg');
+// }
