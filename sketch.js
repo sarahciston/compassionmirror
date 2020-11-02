@@ -5,7 +5,9 @@
 
 let originalText = 'IVO-TextOnly.txt';
 let textGPT = 'IVO-GPT2generatedONLY.txt';
-let SFCompact = 'SFCompactText-Light.otf';
+// let SFCompact = 'SFCompactText-Light.otf';
+let Avenir = 'Avenir.otf';
+
 
 let msgOrig = [];
 let msgGPT = [];
@@ -23,7 +25,7 @@ function preload() {
   originalText = loadStrings(originalText);
   textGPT = loadStrings(textGPT);
   uNet = ml5.uNet('face');
-  SFCompact = loadFont(SFCompact);
+  Avenir = loadFont(Avenir);
 }
 
 
@@ -36,7 +38,7 @@ function setup(){
   frameRate(0.5);
   
   textSize(width/25);
-  // textFont(SFCompact); 
+  textFont(Avenir); 
   
   video = createCapture(VIDEO);
   video.size(width, height);
