@@ -89,7 +89,7 @@ function draw() {
   // if(frameCount % talkRate == 0){}; //change rate TBD
   
   //create static frame with ?frame URL param
-  if (url.searchParams.has("frame") && frameCount > 5) {    
+  if (url.searchParams.has("frame") && frameCount > 1) {    
     noLoop();
     image(img, 0, 0, windowWidth, windowHeight);
   };
